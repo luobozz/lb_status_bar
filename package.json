@@ -1,0 +1,21 @@
+{
+  "name": "lb_status_bar",
+  "version": "1.0.0",
+  "description": "Windows desktop tools",
+  "main": "main.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "eslint -c .eslintrc --ext .ts ./src",
+    "serve": "npm run build"
+  },
+  "dependencies": {
+    "electron": "^15.0.0"
+  },
+  "devDependencies": {},
+  "author": "luobo",
+  "license": "ISC",
+  "repository": "https://github.com/luobozz/lb_status_bar.git",
+  "bugs": "https://github.com/luobozz/lb_status_bar/issues",
+  "homepage": "https://github.com/luobozz/lb_status_bar#readme"
+}
