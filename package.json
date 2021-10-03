@@ -18,7 +18,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "electron_demo_forge"
+            "name": "electron_forge_vue"
           }
         },
         {
@@ -45,9 +45,9 @@
               "config": "./webpack.renderer.config.js",
               "entryPoints": [
                 {
-                  "html": "./src/renderer/index.html",
-                  "js": "./src/renderer/renderer.ts",
-                  "name": "main_window"
+                  "html": "./src/index.html",
+                  "js": "./src/renderer/main.js",
+                  "name": "lb_status_bar"
                 }
               ]
             }
@@ -57,32 +57,33 @@
     }
   },
   "devDependencies": {
-    "@electron-forge/cli": "6.0.0-beta.53",
-    "@electron-forge/maker-deb": "6.0.0-beta.53",
-    "@electron-forge/maker-rpm": "6.0.0-beta.53",
-    "@electron-forge/maker-squirrel": "6.0.0-beta.53",
-    "@electron-forge/maker-zip": "6.0.0-beta.53",
-    "@electron-forge/plugin-webpack": "6.0.0-beta.53",
+    "@electron-forge/cli": "6.0.0-beta.50",
+    "@electron-forge/maker-deb": "6.0.0-beta.50",
+    "@electron-forge/maker-rpm": "6.0.0-beta.50",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.50",
+    "@electron-forge/maker-zip": "6.0.0-beta.50",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.50",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
-    "@typescript-eslint/eslint-plugin": "^3.9.0",
-    "@typescript-eslint/parser": "^3.9.0",
-    "css-loader": "^4.2.1",
-    "electron": "10.1.3",
-    "eslint": "^7.6.0",
-    "eslint-plugin-import": "^2.20.0",
-    "fork-ts-checker-webpack-plugin": "^5.0.14",
-    "node-loader": "^1.0.1",
-    "style-loader": "^1.2.1",
-    "ts-loader": "^8.0.2",
-    "typescript": "^4.0.2",
-    "vue-loader": "^15.9.3",
-    "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.12"
+    "css-loader": "^3.0.0",
+    "electron": "9.0.5",
+    "node-loader": "^0.6.0",
+    "style-loader": "^0.23.1",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "webpack-less-theme-plugin": "^2.1.0"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "vue": "^2.6.12",
-    "vue-router": "^3.4.6"
+    "file-loader": "^6.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "os-utils": "0.0.14",
+    "vue": "^2.6.11",
+    "vue-loader": "14.2.2",
+    "vue-router": "^3.3.4",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "vuex": "^3.4.0"
   },
   "author": "luobo",
   "license": "ISC",

@@ -1,19 +1,24 @@
 <template>
-  <section>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-    <input type="file" @change="selectFileHandle" />
-  </section>
+  <div id="app">
+    <router-view />
+  </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    selectFileHandle(e) {
-      console.log("file change", e.target);
-    }
-  }
+  name: "App",
+  data() {
+    return {};
+  },
+  methods: {},
+  created() {},
+  mounted() {},
 };
 </script>
 
-<style></style>
+<style lang="less">
+@import url("assets/css/common.less");
+#app {
+  border-block-color:inherit;
+}
+</style>
