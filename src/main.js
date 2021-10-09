@@ -1,33 +1,17 @@
-const { app, BrowserWindow,screen } = require('electron');
-const path = require('path');
+const { app, BrowserWindow,Tray,Menu } = require('electron');
+const config=require('./config/window.config')
+const mainUtil=require("./util/main.util")
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
 }
 
 app.on('ready', () => {
-  const mainWindow = new BrowserWindow({
-    // width: screen.getPrimaryDisplay().workAreaSize.width/3, 
-    width: 325, 
-    height: 35, 
-    frame: false,
-    x:0,
-    y:1000,
-    alwaysOnTop:true,
-    transparent: true,
-    resizable:false,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  });
+  appTray = new Tray(config.tray.icon);
+  appTray.setToolTip(config.tray.tips);
+  appTray.setContextMenu( Menu.buildFromTemplate(config.tray.template));
 
-  // 配置在webpack的entry节点,electron-forge位于package.json
-  mainWindow.loadURL(LB_STATUS_BAR_WEBPACK_ENTRY);
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools({
-    mode:"detach"
-  });
+  mainUtil.createWindow(config.mainWindow)
 });
 
 // Quit when all windows are closed.

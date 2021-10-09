@@ -64,12 +64,13 @@
     "@electron-forge/maker-zip": "6.0.0-beta.50",
     "@electron-forge/plugin-webpack": "6.0.0-beta.50",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "copy-webpack-plugin": "^5.0.1",
     "css-loader": "^3.0.0",
     "electron": "9.0.5",
-    "node-loader": "^0.6.0",
-    "style-loader": "^0.23.1",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "node-loader": "^0.6.0",
+    "style-loader": "^0.23.1",
     "webpack-less-theme-plugin": "^2.1.0"
   },
   "dependencies": {
