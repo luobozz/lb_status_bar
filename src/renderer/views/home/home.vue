@@ -4,6 +4,7 @@
       <div class="title">{{ item.title }}</div>
       <div class="content">{{ item.data }}</div>
     </div>
+    <lb-icon class="sfa_btn" type="fa-chevron-right" @click="showMoreFunction()"></lb-icon>
   </div>
 </template>
 <script>

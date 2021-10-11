@@ -25,21 +25,21 @@ module.exports = {
     mainWindow: {
         loadUrl: LB_STATUS_BAR_WEBPACK_ENTRY,
         devTools: {
-            open: false,
+            open: true,
             props: {
                 mode: "detach"
             }
         },
         windowConfig: {
-            width: 325,
-            height: 35,
-            frame: false,
-            x: 0,
-            y: 1000,
-            alwaysOnTop: true,
-            transparent: true,
-            resizable: false,
-            skipTaskbar: true,
+            width: 200,
+            height: 135,
+            // frame: false,
+            x: 65,
+            y: 1047,
+            // alwaysOnTop: true,
+            // transparent: true,
+            resizable: true,
+            // skipTaskbar: true,
             webPreferences: {
                 nodeIntegration: true
             }

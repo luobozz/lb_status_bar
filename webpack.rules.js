@@ -37,23 +37,23 @@ module.exports = [
     use: [
       {
         loader: 'file-loader',
+        options:{
+          name:"static/images/[name].[ext]",
+          outputPath:'static'
+        }
+      },
+    ],
+  },
+  {
+    test: /\.(woff|woff2)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+        options:{
+          name:"static/fonts/[name].[ext]",
+          outputPath:'static'
+        }
       },
     ],
   }
-  // Put your webpack loader rules in this array.  This is where you would put
-  // your ts-loader configuration for instance:
-  /**
-   * Typescript Example:
-   *
-   * {
-   *   test: /\.tsx?$/,
-   *   exclude: /(node_modules|.webpack)/,
-   *   loaders: [{
-   *     loader: 'ts-loader',
-   *     options: {
-   *       transpileOnly: true
-   *     }
-   *   }]
-   * }
-   */
 ];

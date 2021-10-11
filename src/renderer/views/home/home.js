@@ -1,8 +1,9 @@
 import lodash from "lodash"
+import {ipcRendererUtil} from "../../util/electron.util"
 export default {
     init() {
         setInterval(this.getMonitorInfo, this.mointorTimes)
-
+        // ipcRendererUtil.showMianWindowFunctionArea(100)
     },
     getMonitorInfo() {
         this.monitorInfo.forEach(item => {
@@ -10,5 +11,8 @@ export default {
                 item.get(item)
             }
         })
+    },
+    showMoreFunction(){
+        console.log(123)
     }
 }
