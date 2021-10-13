@@ -5,6 +5,21 @@ module.exports = [
     use: 'node-loader',
   },
   {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        plugins: [
+          "@babel/plugin-transform-runtime",
+          "@babel/plugin-proposal-optional-chaining"
+        ],
+        presets: ["@babel/preset-env"],
+        sourceType:'unambiguous'
+      }
+    }
+  },
+  {
     test: /\.(m?js|node)$/,
     parser: { amd: false },
     use: {
@@ -37,21 +52,21 @@ module.exports = [
     use: [
       {
         loader: 'file-loader',
-        options:{
-          name:"static/images/[name].[ext]",
-          outputPath:'static'
+        options: {
+          name: "static/images/[name].[ext]",
+          outputPath: 'static'
         }
       },
     ],
   },
   {
-    test: /\.(woff|woff2)$/i,
+    test: /\.(ttf|woff|woff2)$/i,
     use: [
       {
         loader: 'file-loader',
-        options:{
-          name:"static/fonts/[name].[ext]",
-          outputPath:'static'
+        options: {
+          name: "static/fonts/[name].[ext]",
+          outputPath: 'static'
         }
       },
     ],

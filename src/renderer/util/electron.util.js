@@ -5,10 +5,17 @@ export const ipcRendererUtil = {
             console.log(args)
         })
     },
-    showMianWindowFunctionArea(w) {
-        ipcRenderer.send("mainWindow/functionArea", {
-            action: "show",
+    showMianWindowFunctionArea(sh, w) {
+        ipcRenderer.send("window/mainWindow/functionArea", {
+            action: sh,
             widthIncremental: w
+        })
+    },
+    mainRequestAgent(url, type, config) {
+        return ipcRenderer.invoke('main/request/agent', {
+            url: url,
+            type: type,
+            config:config||{}
         })
     }
 }

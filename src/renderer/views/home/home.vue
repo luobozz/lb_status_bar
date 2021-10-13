@@ -1,10 +1,42 @@
 <template>
-  <div class="home_content">
+  <div
+    class="home_content"
+    @mouseenter="curAction().hover(true)"
+    @mouseleave="curAction().hover(false)"
+  >
     <div v-for="(item, i) in monitorInfo" :key="`moitorItem_${i}`">
-      <div class="title">{{ item.title }}</div>
+      <div class="title">
+        <lb-icon
+          v-if="item.title.flag == 'icon'"
+          :type="item.title.icon"
+          :alt="item.title.title"
+        ></lb-icon>
+        <div v-else>{{ item.title.title }}</div>
+      </div>
       <div class="content">{{ item.data }}</div>
     </div>
-    <lb-icon class="sfa_btn" type="fa-chevron-right" @click="showMoreFunction()"></lb-icon>
+    <div class="sfa_btn_group" ref="sfa">
+      <div
+        :class="{ sfa_btn_switch: true, show: sfa.show }"
+        @click="sfa.show ? sfaAction().hide() : sfaAction().show()"
+      >
+        <lb-icon
+          v-show="sfa.switchShow"
+          :type="sfa.show ? 'fa-angle-left' : 'fa-angle-right'"
+        ></lb-icon>
+      </div>
+      <div :class="{ sfa_btn_area: true, show: sfa.show }">
+        <div class="sfa_btn">
+          <lb-icon v-show="sfa.switchShow" type="fa-share-square-o"></lb-icon>
+        </div>
+        <div class="sfa_btn">
+          <lb-icon v-show="sfa.switchShow" type="fa-shield"></lb-icon>
+        </div>
+        <div class="sfa_btn">
+          <lb-icon v-show="sfa.switchShow" type="fa-reorder"></lb-icon>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -16,26 +48,90 @@ export default {
       mointorTimes: 1000,
       monitorInfo: [
         {
-          title: "CPU",
+          title: {
+            flag: "icon",
+            title: "CPU",
+            icon: "fa-microchip",
+          },
           data: "--",
           show: true,
           interval: true,
-          get: (r) => {
+          set: (r) => {
+            const coreNumber = `${os.cpuCount()}C`;
             os.cpuUsage(function (v) {
-              r.data=`${(v*100).toFixed(0)}%`
+              const cpuUsePrecent = `${(v * 100).toFixed(0)}%`;
+              r.data = `${cpuUsePrecent}`;
             });
           },
         },
         {
-          title: "RAM",
+          title: {
+            flag: "icon",
+            title: "RAM",
+            icon: "fa-cubes",
+          },
           data: "--",
           show: true,
           interval: true,
-          get: (r) => {
-            r.data=`${((1-os.freememPercentage())*100).toFixed(0)}%`
+          set: (r) => {
+            const total = (os.totalmem() / 1000).toFixed(2);
+            const free = (os.freemem() / 1000).toFixed(2);
+            const use = (total - free).toFixed(2);
+            const memUsePrecent = `${(
+              (1 - os.freememPercentage()) *
+              100
+            ).toFixed(0)}%`;
+            const memUseDetail = `${use} GB / ${total} GB`;
+            r.data = `${memUsePrecent}`;
+          },
+        },
+        {
+          title: {
+            flag: "icon",
+            title: "RAM",
+            icon: "fa-cubes",
+          },
+          data: "--",
+          show: true,
+          interval: true,
+          set: (r) => {
+            const total = (os.totalmem() / 1000).toFixed(2);
+            const free = (os.freemem() / 1000).toFixed(2);
+            const use = (total - free).toFixed(2);
+            const memUsePrecent = `${(
+              (1 - os.freememPercentage()) *
+              100
+            ).toFixed(0)}%`;
+            const memUseDetail = `${use} GB / ${total} GB`;
+            r.data = `${memUsePrecent}`;
+          },
+        },
+        {
+          title: {
+            flag: "icon",
+            title: "RAM",
+            icon: "fa-cubes",
+          },
+          data: "--",
+          show: true,
+          interval: true,
+          set: (r) => {
+            const total = (os.totalmem() / 1000).toFixed(2);
+            const free = (os.freemem() / 1000).toFixed(2);
+            const use = (total - free).toFixed(2);
+            const memUsePrecent = `${(
+              (1 - os.freememPercentage()) *
+              100
+            ).toFixed(0)}%`;
+            const memUseDetail = `${use} GB / ${total} GB`;
+            r.data = `${memUsePrecent}`;
           },
         },
       ],
+      sfa: {
+        switchShow: false,
+        show: false,
+      },
     };
   },
   methods: methods,

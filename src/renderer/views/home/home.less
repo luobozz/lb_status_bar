@@ -1,32 +1,87 @@
-.home_content{
+.home_content {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    // justify-content: space-between;
     color: #ffffff;
-    font-weight: bold;
+    // font-weight: bold;
+    padding: 0 0 0 10px;
+    // border: 1px solid #404040;
 
-    &>*:first-child{
-        margin-left: 10px;
+    &>*:not(:first-child) {
+        margin-left: 20px;
     }
 
-    &>*:not(:last-child){
-        margin-right: 20px;
-    }
 
-
-    &>*{
+    &>*:not(.sfa_btn_group) {
         display: flex;
         flex-shrink: 0;
-        &>*:not(:last-child){
+        height: 100%;
+
+        &>*{
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        &>*:not(:last-child) {
             margin-right: 5px;
         }
     }
 
-    .sfa_btn{
-        margin-left: auto;
-        margin-right: 5px;
-        cursor: pointer;
+    .sfa_btn_group {
+        height: 91%;
+        margin-left: 5px;
+        z-index: 99;
+        transition: .3s;
+        width: 25px;
+        display: flex;
+        align-items: center;
+
+        .sfa_btn_switch {
+            width: 25px;
+            height: 100%;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .sfa_btn_switch:hover,
+        .sfa_btn_switch.show {
+            background-color: #404040;
+        }
+
+        .sfa_btn_area {
+            width: 0px;
+            height: 100%;
+            background-color: #404040;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            .sfa_btn{
+                width: 25px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: .03s;
+            }
+
+            .sfa_btn:hover{
+                font-size: 115%;
+            }
+        }
+
+        .sfa_btn_area.show {
+            width: 100px;
+            margin-left: 5px;
+        }
     }
+
 }

@@ -1,17 +1,21 @@
+@font-face {
+    font-family: LFont;
+    src: url('../font/JetBrainsMono-Regular.ttf')
+}
+
 html,
 body,
 #app {
     height: 100%;
-    width : 100%;
+    width: 100%;
     background: transparent;
     font-size: 14px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    border: 1px solid black;
+    font-family: "LFont", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
 }
 
 * {
-    padding   : 0;
-    margin    : 0;
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
     user-select: none;
 }
@@ -19,4 +23,8 @@ body,
 div {
     position: relative;
     overflow: hidden;
+}
+
+html {
+    padding: 8px;
 }
