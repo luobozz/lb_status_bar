@@ -5,20 +5,24 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "App",
   data() {
     return {};
   },
-  methods: {},
+  methods: { ...mapActions(["initLocationOnce"]) },
+  computed: {},
   created() {},
-  mounted() {},
+  mounted() {
+    this.initLocationOnce();
+  },
 };
 </script>
 
 <style lang="less">
 @import url("assets/css/common.less");
 #app {
-  border-block-color:inherit;
+  border-block-color: inherit;
 }
 </style>

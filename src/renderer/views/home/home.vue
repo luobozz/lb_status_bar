@@ -5,13 +5,13 @@
     @mouseleave="curAction().hover(false)"
   >
     <div v-for="(item, i) in monitorInfo" :key="`moitorItem_${i}`">
-      <div class="title">
+      <div class="title" v-if="item.title.flag">
         <lb-icon
           v-if="item.title.flag == 'icon'"
           :type="item.title.icon"
           :alt="item.title.title"
         ></lb-icon>
-        <div v-else>{{ item.title.title }}</div>
+        <div v-else-if="item.title.flag=='title'">{{ item.title.title }}</div>
       </div>
       <div class="content">{{ item.data }}</div>
     </div>
@@ -42,6 +42,8 @@
 <script>
 import methods from "./home.js";
 import os from "os-utils";
+import moment from "moment"
+
 export default {
   data() {
     return {
@@ -77,6 +79,7 @@ export default {
             const total = (os.totalmem() / 1000).toFixed(2);
             const free = (os.freemem() / 1000).toFixed(2);
             const use = (total - free).toFixed(2);
+
             const memUsePrecent = `${(
               (1 - os.freememPercentage()) *
               100
@@ -88,43 +91,32 @@ export default {
         {
           title: {
             flag: "icon",
-            title: "RAM",
-            icon: "fa-cubes",
+            title: "WEATHER",
+            icon: "if-a-qingtianbaitian",
           },
           data: "--",
           show: true,
           interval: true,
           set: (r) => {
-            const total = (os.totalmem() / 1000).toFixed(2);
-            const free = (os.freemem() / 1000).toFixed(2);
-            const use = (total - free).toFixed(2);
-            const memUsePrecent = `${(
-              (1 - os.freememPercentage()) *
-              100
-            ).toFixed(0)}%`;
-            const memUseDetail = `${use} GB / ${total} GB`;
-            r.data = `${memUsePrecent}`;
+            this.$api.tencent.weather.getWeather().then(res => {
+              const observe=this.$api.tencent.weather.getWeaherIcon(res.data.observe)
+              const aqi=res.data.air.aqi_name
+              r.title.icon=observe.icon
+              r.data = `${observe.weather} ${observe.degree}℃ ${aqi}`;
+            });
           },
         },
         {
           title: {
-            flag: "icon",
-            title: "RAM",
-            icon: "fa-cubes",
+            flag: null,
+            title: "DATE",
+            icon: "fa-calendar",
           },
           data: "--",
           show: true,
           interval: true,
           set: (r) => {
-            const total = (os.totalmem() / 1000).toFixed(2);
-            const free = (os.freemem() / 1000).toFixed(2);
-            const use = (total - free).toFixed(2);
-            const memUsePrecent = `${(
-              (1 - os.freememPercentage()) *
-              100
-            ).toFixed(0)}%`;
-            const memUseDetail = `${use} GB / ${total} GB`;
-            r.data = `${memUsePrecent}`;
+            r.data=moment().format("YYYY/MM/DD HH:mm:ss")
           },
         },
       ],

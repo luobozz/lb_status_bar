@@ -34,7 +34,7 @@ export default {
       if (this.type.indexOf('fa') != -1) {
         return `lb-icon fa ${this.type}`
       } else if (this.type.indexOf('if') != -1) {
-        return `lb-icon iconfont ${this.type.replace(/if-/, '')}`
+        return `lb-icon iconfont ${this.type}`
       } else if (this.type.indexOf('svg') != -1) {
         return `lb-icon icon`
       } else {

@@ -31,7 +31,7 @@ module.exports = {
             }
         },
         windowConfig: {
-            width: 310+16,
+            width: 450+16,
             height: 30+16,
             frame: false,
             x: 70,
