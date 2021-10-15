@@ -13,12 +13,13 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon":"./src/assets/ico/lb_256"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "electron_forge_vue"
           }
         },
         {
@@ -45,9 +46,9 @@
               "config": "./webpack.renderer.config.js",
               "entryPoints": [
                 {
-                  "html": "./src/index.html",
+                  "html": "./src/renderer/index.html",
                   "js": "./src/renderer/main.js",
-                  "name": "lb_status_bar"
+                  "name": "main_window"
                 }
               ]
             }

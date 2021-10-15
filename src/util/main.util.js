@@ -36,6 +36,8 @@ module.exports = {
                 actions[args.action]()
             })
 
+            //TODO 尝试使用contextBridge 
+            // 代理绕过浏览器的请求(比如绕过同源策略，即跨域)
             ipcMain.handle("main/request/agent", async (event, args) => {
                 const res = await axios[args.type](args.url, args.config || {}).then(r => {
                     return r.data

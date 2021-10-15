@@ -23,15 +23,16 @@ module.exports = {
         ]
     },
     mainWindow: {
-        loadUrl: LB_STATUS_BAR_WEBPACK_ENTRY,
+        loadUrl: MAIN_WINDOW_WEBPACK_ENTRY,
         devTools: {
-            open: true,
+            // open: true,
+            open: false,
             props: {
                 mode: "detach"
             }
         },
         windowConfig: {
-            width: 450+16,
+            width: 460+16,
             height: 30+16,
             frame: false,
             x: 70,
