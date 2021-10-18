@@ -1,5 +1,3 @@
-import { reject } from "lodash";
-import { stat } from "original-fs";
 import locationApi from "../../api/tencent/location.api"
 const defaultAppProperties = {
     location: {

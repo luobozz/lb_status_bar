@@ -1,4 +1,5 @@
-import { ipcRenderer } from 'electron'
+import {electron} from "./node_module.util"
+const {ipcRenderer}=electron
 export const ipcRendererUtil = {
     listener() {
         ipcRenderer.on("ipcRenderer_test", (event, args) => {
@@ -15,7 +16,7 @@ export const ipcRendererUtil = {
         return ipcRenderer.invoke('main/request/agent', {
             url: url,
             type: type,
-            config:config||{}
+            config: config || {}
         })
     }
 }

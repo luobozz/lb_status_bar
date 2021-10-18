@@ -11,7 +11,7 @@
           :type="item.title.icon"
           :alt="item.title.title"
         ></lb-icon>
-        <div v-else-if="item.title.flag=='title'">{{ item.title.title }}</div>
+        <div v-else-if="item.title.flag == 'title'">{{ item.title.title }}</div>
       </div>
       <div class="content">{{ item.data }}</div>
     </div>
@@ -41,8 +41,8 @@
 </template>
 <script>
 import methods from "./home.js";
-import os from "os-utils";
-import moment from "moment"
+import moment from "moment";
+import { osUtils as os } from "../../util/node_module.util";
 
 export default {
   data() {
@@ -92,16 +92,18 @@ export default {
           title: {
             flag: "icon",
             title: "WEATHER",
-            icon: "if-a-qingtianbaitian",
+            icon: "fa-circle-o-notch fa-spin",
           },
           data: "--",
           show: true,
           interval: true,
           set: (r) => {
-            this.$api.tencent.weather.getWeather().then(res => {
-              const observe=this.$api.tencent.weather.getWeaherIcon(res.data.observe)
-              const aqi=res.data.air.aqi_name
-              r.title.icon=observe.icon
+            this.$api.tencent.weather.getWeather().then((res) => {
+              const observe = this.$api.tencent.weather.getWeaherIcon(
+                res.data.observe
+              );
+              const aqi = res.data.air.aqi_name;
+              r.title.icon = observe.icon;
               r.data = `${observe.weather} ${observe.degree}℃ ${aqi}`;
             });
           },
@@ -116,7 +118,7 @@ export default {
           show: true,
           interval: true,
           set: (r) => {
-            r.data=moment().format("YYYY/MM/DD HH:mm:ss")
+            r.data = moment().format("YYYY/MM/DD HH:mm:ss");
           },
         },
       ],

@@ -25,8 +25,8 @@ module.exports = {
     mainWindow: {
         loadUrl: MAIN_WINDOW_WEBPACK_ENTRY,
         devTools: {
-            // open: true,
-            open: false,
+            open: true,
+            // open: false,
             props: {
                 mode: "detach"
             }
@@ -45,7 +45,7 @@ module.exports = {
             resizable: false,
             skipTaskbar: true,
             webPreferences: {
-                nodeIntegration: true
+                preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
             },
         }
     }

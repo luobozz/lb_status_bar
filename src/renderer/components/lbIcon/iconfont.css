@@ -1,9 +1,7 @@
 /* TODO 定版时加入本地 */
 @font-face {
     font-family: "iconfont"; /* Project id 2865128 */
-    src: url('http://at.alicdn.com/t/font_2865128_bbh6744g29.woff2?t=1634191425347') format('woff2'),
-         url('http://at.alicdn.com/t/font_2865128_bbh6744g29.woff?t=1634191425347') format('woff'),
-         url('http://at.alicdn.com/t/font_2865128_bbh6744g29.ttf?t=1634191425347') format('truetype');
+    src: url('./fonts/iconfont.woff2?t=1634551548579') format('woff2');
   }
   
   .iconfont {

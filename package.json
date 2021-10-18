@@ -11,90 +11,44 @@
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts ."
   },
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "icon":"./src/assets/ico/lb_256"
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ],
-      "plugins": [
-        [
-          "@electron-forge/plugin-webpack",
-          {
-            "mainConfig": "./webpack.main.config.js",
-            "renderer": {
-              "config": "./webpack.renderer.config.js",
-              "entryPoints": [
-                {
-                  "html": "./src/renderer/index.html",
-                  "js": "./src/renderer/main.js",
-                  "name": "main_window"
-                }
-              ]
-            }
-          }
-        ]
-      ]
-    }
-  },
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-proposal-optional-chaining": "^7.14.5",
     "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.15.8",
-    "@electron-forge/cli": "6.0.0-beta.50",
-    "@electron-forge/maker-deb": "6.0.0-beta.50",
-    "@electron-forge/maker-rpm": "6.0.0-beta.50",
-    "@electron-forge/maker-squirrel": "6.0.0-beta.50",
-    "@electron-forge/maker-zip": "6.0.0-beta.50",
-    "@electron-forge/plugin-webpack": "6.0.0-beta.50",
-    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@electron-forge/cli": "6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.61",
+    "@electron-forge/maker-zip": "6.0.0-beta.61",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.61",
     "babel-loader": "^8.2.2",
-    "copy-webpack-plugin": "^5.0.1",
+    "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^3.0.0",
-    "electron": "9.0.5",
+    "electron": "^15.0.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "file-loader": "^6.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "node-loader": "^0.6.0",
     "style-loader": "^0.23.1",
+    "vue-loader": "14.2.4",
+    "vue-style-loader": "^4.1.2",
     "webpack-less-theme-plugin": "^2.1.0"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
     "axios": "^0.23.0",
-    "electron-squirrel-startup": "^1.0.0",
-    "file-loader": "^6.0.0",
     "lodash": "^4.17.21",
     "md5": "^2.3.0",
     "moment": "^2.29.1",
     "os-utils": "0.0.14",
     "vue": "^2.6.11",
-    "vue-loader": "14.2.4",
     "vue-router": "^3.3.4",
-    "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.11",
     "vuex": "^3.4.0",
     "vuex-persistedstate": "^3.0.1"
+  },
+  "config": {
+    "forge": "./forge.config.js"
   },
   "author": "luobo",
   "license": "ISC",

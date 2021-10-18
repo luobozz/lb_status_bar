@@ -1,12 +1,17 @@
 const path = require('path');
-
 const rendererPath = "main_window"
 
 module.exports = {
-  // devtool:"none",
+  devtool: false,
   output: {
-    publicPath: "../",
-    filename: `${rendererPath}/js/[name].[hash].js`,
+  },
+  resolve: {
+    fallback: {
+      // 采用contextBridge引入electron所需node核心模块
+      // https://webpack.docschina.org/configuration/resolve/
+      // os: require.resolve("os-browserify"),
+      // path: require.resolve("path-browserify"),
+    }
   },
   module: {
     rules: [
