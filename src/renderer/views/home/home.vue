@@ -99,8 +99,9 @@ export default {
           interval: true,
           set: (r) => {
             this.$api.tencent.weather.getWeather().then((res) => {
+              const mm=parseInt(moment().format("mm"))
               const observe = this.$api.tencent.weather.getWeaherIcon(
-                res.data.observe
+                res.data.forecast_1h[mm]
               );
               const aqi = res.data.air.aqi_name;
               r.title.icon = observe.icon;

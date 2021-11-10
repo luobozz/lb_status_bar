@@ -25,8 +25,8 @@ module.exports = {
     mainWindow: {
         loadUrl: MAIN_WINDOW_WEBPACK_ENTRY,
         devTools: {
-            open: true,
-            // open: false,
+            // open: true,
+            open: false,
             props: {
                 mode: "detach"
             }
