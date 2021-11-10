@@ -7,10 +7,18 @@ export default {
     },
     getMonitorInfo() {
         this.monitorInfo.forEach(item => {
-            if (item.show && item.interval && typeof item.set === "function") {
-                item.set(item)
+            if (item.show && typeof item.set === "function") {
+                if (item.interval) {
+                    item.set(item)
+                } else if (item.timesInterval) {
+                    // mointor执行为1秒1次 item.timesInterval为多少秒 例如 2为2秒执行一次
+                    if (this.mointorTotal % item.timesInterval == 0) {
+                        item.set(item)
+                    }
+                }
             }
         })
+        this.mointorTotal++
     },
     sfaAction() {
         return {

@@ -43,11 +43,13 @@
 import methods from "./home.js";
 import moment from "moment";
 import { osUtils as os } from "../../util/node_module.util";
+import commonUtil from "../../util/common.util";
 
 export default {
   data() {
     return {
       mointorTimes: 1000,
+      mointorTotal:0,
       monitorInfo: [
         {
           title: {
@@ -96,16 +98,22 @@ export default {
           },
           data: "--",
           show: true,
-          interval: true,
+          timesInterval:20*60,
           set: (r) => {
-            this.$api.tencent.weather.getWeather().then((res) => {
-              const mm=parseInt(moment().format("mm"))
-              const observe = this.$api.tencent.weather.getWeaherIcon(
-                res.data.forecast_1h[mm]
-              );
-              const aqi = res.data.air.aqi_name;
+            this.$api.baidu.weather.getWeather().then((res) => {
+              // console.log(res.result, res.result.now);
+              const observe = {
+                icon: commonUtil.getWeaherIcon(res.result.now.text),
+                weather: res.result.now.text,
+                degree: res.result.now.temp,
+                aqi: res.result.now.wind_dir,
+              };
+              // const mm=parseInt(moment().format("mm"))
+              // const observe = commonUtil.getWeaherIcon(
+              //   res.data.forecast_1h[mm]
+              // );
               r.title.icon = observe.icon;
-              r.data = `${observe.weather} ${observe.degree}℃ ${aqi}`;
+              r.data = `${observe.weather} ${observe.degree}℃ ${observe.aqi}`;
             });
           },
         },
