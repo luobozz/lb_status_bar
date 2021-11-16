@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       mointorTimes: 1000,
-      mointorTotal:0,
+      mointorTotal: 0,
       monitorInfo: [
         {
           title: {
@@ -98,22 +98,32 @@ export default {
           },
           data: "--",
           show: true,
-          timesInterval:20*60,
+          timesInterval: 20 * 60,
           set: (r) => {
-            this.$api.baidu.weather.getWeather().then((res) => {
-              // console.log(res.result, res.result.now);
+            // this.$api.baidu.weather.getWeather().then((res) => {
+            //   console.log(res.result, res.result.now);
+            //   const observe = {
+            //     icon: commonUtil.getWeaherIcon(res.result.now.text),
+            //     weather: res.result.now.text,
+            //     degree: res.result.now.temp,
+            //     aqi: res.result.now.wind_dir,
+            //   };
+            //   // const mm=parseInt(moment().format("mm"))
+            //   // const observe = commonUtil.getWeaherIcon(
+            //   //   res.data.forecast_1h[mm]
+            //   // );
+            //   r.title.icon = observe.icon;
+            //   r.data = `${observe.weather} ${observe.degree}℃ ${observe.aqi}`;
+            // });
+
+            this.$api.tencent.weather.getWeather().then((res) => {
               const observe = {
-                icon: commonUtil.getWeaherIcon(res.result.now.text),
-                weather: res.result.now.text,
-                degree: res.result.now.temp,
-                aqi: res.result.now.wind_dir,
+                ...res.data.observe,
+                icon:commonUtil.getWeaherIcon(res.data.observe.weather),
               };
-              // const mm=parseInt(moment().format("mm"))
-              // const observe = commonUtil.getWeaherIcon(
-              //   res.data.forecast_1h[mm]
-              // );
+              const aqi = res.data.air.aqi_name;
               r.title.icon = observe.icon;
-              r.data = `${observe.weather} ${observe.degree}℃ ${observe.aqi}`;
+              r.data = `${observe.weather} ${observe.degree}℃ ${aqi}`;
             });
           },
         },

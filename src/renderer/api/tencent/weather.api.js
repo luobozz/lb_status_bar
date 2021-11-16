@@ -12,7 +12,7 @@ export default {
             //          	air 空气质量
             //          	rise 日出
             // weather_type	查询类型，多个|分隔
-            const weatherType = "air|forecast_1h"
+            const weatherType = "air|observe|forecast_1h"
             const location = store.getters.location
             ipcRendererUtil.mainRequestAgent(encodeURI(`https://wis.qq.com/weather/common?source=pc&weather_type=${weatherType}&province=${location.province}&city=${location.city}&county=${location.district}`), 'get', {}).then(r => {
                 resolve(r)
