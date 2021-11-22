@@ -28,7 +28,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "file-loader": "^6.0.0",
     "less": "^3.0.4",
-    "less-loader": "^5.0.0",
+    "less-loader": "^10.2.0",
     "node-loader": "^0.6.0",
     "style-loader": "^0.23.1",
     "vue-loader": "14.2.4",
